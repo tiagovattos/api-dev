@@ -1,6 +1,7 @@
 package br.edu.fema.apidev.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,8 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @NotBlank(message = "O campo nome é obrigatório.")
     private String nome;
 
     @OneToMany(mappedBy = "empresa")
