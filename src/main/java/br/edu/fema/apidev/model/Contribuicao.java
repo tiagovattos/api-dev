@@ -15,11 +15,11 @@ public class Contribuicao {
     @EmbeddedId
     private ContribuicaoId contribuicaoId;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @MapsId("aplicativoId")
     private Aplicativo aplicativo;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @MapsId("desenvolvedorId")
     private Desenvolvedor desenvolvedor;
 
