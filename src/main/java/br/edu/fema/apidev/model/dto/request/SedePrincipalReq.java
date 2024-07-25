@@ -1,6 +1,5 @@
-package br.edu.fema.apidev.model.dto;
+package br.edu.fema.apidev.model.dto.request;
 
-import br.edu.fema.apidev.model.Empresa;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,8 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SedePrincipalDto {
-    private Long id;
+public class SedePrincipalReq {
     private String endereco;
     private String cidade;
-    private Empresa empresa;
+    private Long empresaId;
 }
