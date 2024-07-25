@@ -16,7 +16,6 @@ import java.util.Set;
 @Table
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-//@EntityListeners(AuditingEntityListener.class)
 public class Aplicativo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
