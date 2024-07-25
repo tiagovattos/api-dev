@@ -1,5 +1,5 @@
 # Atividade De Fixação CEPEIN (Backend).
-> Objetivo do projeto - Desenvolver um projeto Spring Boot atendendo aos requisitos acima e promovendo boas práticas de desenvolvimento.
+> Objetivo do projeto - Desenvolver um projeto Spring Boot atendendo aos requisitos abaixo e promovendo boas práticas de desenvolvimento.
 
 # 🛠️ Tecnologias utilizadas:
 - **Java 21**
