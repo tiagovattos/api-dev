@@ -1,0 +1,55 @@
+package br.edu.fema.apidev.service.impl;
+
+import br.edu.fema.apidev.model.Desenvolvedor;
+import br.edu.fema.apidev.model.Empresa;
+import br.edu.fema.apidev.model.dto.mapper.DesenvolvedorMapper;
+import br.edu.fema.apidev.model.dto.request.DesenvolvedorReq;
+import br.edu.fema.apidev.repository.DesenvolvedorRepository;
+import br.edu.fema.apidev.service.DesenvolvedorService;
+import br.edu.fema.apidev.service.EmpresaService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class DesenvolvedorServiceImpl implements DesenvolvedorService {
+    private final DesenvolvedorRepository desenvolvedorRepository;
+    private final EmpresaService empresaService;
+
+    public DesenvolvedorServiceImpl(DesenvolvedorRepository desenvolvedorRepository, EmpresaService empresaService) {
+        this.desenvolvedorRepository = desenvolvedorRepository;
+        this.empresaService = empresaService;
+    }
+
+    @Override
+    public Desenvolvedor findById(Long id) {
+        return desenvolvedorRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Desenvolvedor> findAll() {
+        return desenvolvedorRepository.findAll();
+    }
+
+    @Override
+    public Desenvolvedor save(DesenvolvedorReq desenvolvedorReq) {
+        Desenvolvedor desenvolvedor = new Desenvolvedor();
+        Empresa empresa = empresaService.findById(desenvolvedorReq.getEmpresaId());
+        return desenvolvedorRepository.save(
+                DesenvolvedorMapper.mapEntity(desenvolvedorReq, desenvolvedor, empresa));
+    }
+
+    @Override
+    public Desenvolvedor update(Long id, DesenvolvedorReq desenvolvedorReq) {
+        Desenvolvedor desenvolvedor = this.findById(id);
+        Empresa empresa = empresaService.findById(desenvolvedorReq.getEmpresaId());
+        return desenvolvedorRepository.save(
+                DesenvolvedorMapper.mapEntity(desenvolvedorReq, desenvolvedor, empresa));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        Desenvolvedor desenvolvedor = this.findById(id);
+        desenvolvedorRepository.delete(desenvolvedor);
+    }
+}
