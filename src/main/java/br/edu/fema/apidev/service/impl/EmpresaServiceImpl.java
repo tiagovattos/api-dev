@@ -31,13 +31,13 @@ public class EmpresaServiceImpl implements EmpresaService {
     @Override
     public Empresa save(EmpresaReq empresaReq) {
         Empresa empresa = new Empresa();
-        return empresaRepository.save(EmpresaMapper.toEntity(empresaReq, empresa));
+        return empresaRepository.save(EmpresaMapper.mapEntity(empresaReq, empresa));
     }
 
     @Override
     public Empresa update(Long id, EmpresaReq empresaReq) {
         Empresa empresa = this.findById(id);
-        return empresaRepository.save(EmpresaMapper.toEntity(empresaReq, empresa));
+        return empresaRepository.save(EmpresaMapper.mapEntity(empresaReq, empresa));
     }
 
     @Override

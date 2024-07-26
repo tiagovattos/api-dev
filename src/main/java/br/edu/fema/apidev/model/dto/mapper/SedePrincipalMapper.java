@@ -16,7 +16,9 @@ public class SedePrincipalMapper {
         );
     }
 
-    public static SedePrincipal toEntity(SedePrincipalReq req, SedePrincipal sedePrincipal, Empresa empresa) {
+    public static SedePrincipal mapEntity(SedePrincipalReq req,
+                                          SedePrincipal sedePrincipal,
+                                          Empresa empresa) {
         sedePrincipal.setEndereco(req.getEndereco());
         sedePrincipal.setCidade(req.getCidade());
         sedePrincipal.setEmpresa(empresa);

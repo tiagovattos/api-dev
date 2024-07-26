@@ -5,6 +5,7 @@ import br.edu.fema.apidev.model.dto.mapper.SedePrincipalMapper;
 import br.edu.fema.apidev.model.dto.request.SedePrincipalReq;
 import br.edu.fema.apidev.model.dto.response.SedePrincipalRes;
 import br.edu.fema.apidev.service.SedePrincipalService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,7 @@ public class SedePrincipalController {
     }
 
     @PostMapping
-    public ResponseEntity<SedePrincipalRes> save(@RequestBody SedePrincipalReq sedePrincipalReq) {
+    public ResponseEntity<SedePrincipalRes> save(@RequestBody @Valid SedePrincipalReq sedePrincipalReq) {
         SedePrincipal sedePrincipal = sedePrincipalService.save(sedePrincipalReq);
         return ResponseEntity.ok().body(
                 SedePrincipalMapper.toDto(sedePrincipal, sedePrincipal.getEmpresa()));
@@ -43,7 +44,7 @@ public class SedePrincipalController {
 
     @PutMapping("/{id}")
     public ResponseEntity<SedePrincipalRes> update(@PathVariable Long id,
-                                                   @RequestBody SedePrincipalReq sedePrincipalReq) {
+                                                   @RequestBody @Valid SedePrincipalReq sedePrincipalReq) {
         SedePrincipal sedePrincipal = sedePrincipalService.update(id, sedePrincipalReq);
         return ResponseEntity.ok().body(
                 SedePrincipalMapper.toDto(sedePrincipal, sedePrincipal.getEmpresa()));

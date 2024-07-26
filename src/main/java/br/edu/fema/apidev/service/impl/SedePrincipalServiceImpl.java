@@ -36,7 +36,7 @@ public class SedePrincipalServiceImpl implements SedePrincipalService {
         SedePrincipal sedePrincipal = new SedePrincipal();
         Empresa empresa = empresaService.findById(sedePrincipalReq.getEmpresaId());
         return sedePrincipalRepository.save(
-                SedePrincipalMapper.toEntity(sedePrincipalReq, sedePrincipal, empresa));
+                SedePrincipalMapper.mapEntity(sedePrincipalReq, sedePrincipal, empresa));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class SedePrincipalServiceImpl implements SedePrincipalService {
         SedePrincipal sedePrincipal = this.findById(id);
         Empresa empresa = empresaService.findById(sedePrincipalReq.getEmpresaId());
         return sedePrincipalRepository.save(
-                SedePrincipalMapper.toEntity(sedePrincipalReq, sedePrincipal, empresa));
+                SedePrincipalMapper.mapEntity(sedePrincipalReq, sedePrincipal, empresa));
     }
 
     @Override

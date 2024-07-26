@@ -13,7 +13,7 @@ public class EmpresaMapper {
         );
     }
 
-    public static Empresa toEntity(EmpresaReq empresaReq, Empresa empresa) {
+    public static Empresa mapEntity(EmpresaReq empresaReq, Empresa empresa) {
         empresa.setNome(empresaReq.getNome());
         return empresa;
     }
