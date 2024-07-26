@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -31,7 +30,6 @@ public class Aplicativo {
     @OneToMany(mappedBy = "aplicativo")
     private Set<Contribuicao> contribuicoes;
 
-    @LastModifiedDate
     private LocalDateTime ultimaAtualizacao;
 
     @Override
