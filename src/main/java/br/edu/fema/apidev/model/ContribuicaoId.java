@@ -10,8 +10,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ContribuicaoId implements Serializable {
     private Long aplicativoId;
     private Long desenvolvedorId;

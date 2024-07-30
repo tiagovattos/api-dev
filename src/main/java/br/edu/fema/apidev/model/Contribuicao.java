@@ -11,8 +11,10 @@ import java.util.Objects;
 @Embeddable
 @Entity
 @Table
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Contribuicao {
     @EmbeddedId
     private ContribuicaoId contribuicaoId;

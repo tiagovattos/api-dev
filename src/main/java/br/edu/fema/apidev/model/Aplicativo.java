@@ -1,7 +1,6 @@
 package br.edu.fema.apidev.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,20 +12,20 @@ import java.util.Set;
 
 @Entity
 @Table
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Aplicativo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    @NotBlank(message = "O campo nome é obrigatório.")
     private String nome;
 
     @ManyToOne
     private Empresa empresa;
 
-//    @ManyToMany
+    //    @ManyToMany
     @OneToMany(mappedBy = "aplicativo")
     private Set<Contribuicao> contribuicoes;
 
