@@ -1,5 +1,6 @@
 package br.edu.fema.apidev.service.impl;
 
+import br.edu.fema.apidev.exception.ResourceNotFoundException;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.SedePrincipal;
 import br.edu.fema.apidev.model.dto.mapper.SedePrincipalMapper;
@@ -23,7 +24,9 @@ public class SedePrincipalServiceImpl implements SedePrincipalService {
 
     @Override
     public SedePrincipal findById(Long id) {
-        return sedePrincipalRepository.findById(id).orElse(null);
+        return sedePrincipalRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Sede principal de id = " + id + " não encontrada.")
+        );
     }
 
     @Override

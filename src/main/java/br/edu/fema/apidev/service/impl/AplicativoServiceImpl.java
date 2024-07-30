@@ -1,5 +1,6 @@
 package br.edu.fema.apidev.service.impl;
 
+import br.edu.fema.apidev.exception.ResourceNotFoundException;
 import br.edu.fema.apidev.model.Aplicativo;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.mapper.AplicativoMapper;
@@ -25,7 +26,9 @@ public class AplicativoServiceImpl implements AplicativoService {
 
     @Override
     public Aplicativo findById(Long id) {
-        return aplicativoRepository.findById(id).orElse(null);
+        return aplicativoRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Aplicativo de id = " + id + " não encontrado.")
+        );
     }
 
     @Override

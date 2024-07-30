@@ -1,5 +1,6 @@
 package br.edu.fema.apidev.service.impl;
 
+import br.edu.fema.apidev.exception.ResourceNotFoundException;
 import br.edu.fema.apidev.model.Desenvolvedor;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.mapper.DesenvolvedorMapper;
@@ -23,7 +24,9 @@ public class DesenvolvedorServiceImpl implements DesenvolvedorService {
 
     @Override
     public Desenvolvedor findById(Long id) {
-        return desenvolvedorRepository.findById(id).orElse(null);
+        return desenvolvedorRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Desenvolvedor de id = " + id + " não encontrado.")
+        );
     }
 
     @Override

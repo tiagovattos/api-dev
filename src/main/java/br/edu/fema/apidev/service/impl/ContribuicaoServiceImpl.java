@@ -1,5 +1,6 @@
 package br.edu.fema.apidev.service.impl;
 
+import br.edu.fema.apidev.exception.ResourceNotFoundException;
 import br.edu.fema.apidev.model.Aplicativo;
 import br.edu.fema.apidev.model.Contribuicao;
 import br.edu.fema.apidev.model.Desenvolvedor;
@@ -27,7 +28,10 @@ public class ContribuicaoServiceImpl implements ContribuicaoService {
 
     @Override
     public Contribuicao findById(Long idApp, Long idDev) {
-        return contribuicaoRepository.findByAplicativoIdAndDesenvolvedorId(idApp, idDev).orElse(null);
+        return contribuicaoRepository.findByAplicativoIdAndDesenvolvedorId(idApp, idDev).orElseThrow(
+                () -> new ResourceNotFoundException("Contribuição de id do desenvolvedor = " + idDev +
+                        " e id do aplicativo = " + idDev + " não encontrada.")
+        );
     }
 
     @Override

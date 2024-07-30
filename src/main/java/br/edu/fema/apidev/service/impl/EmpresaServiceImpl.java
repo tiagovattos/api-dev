@@ -1,5 +1,6 @@
 package br.edu.fema.apidev.service.impl;
 
+import br.edu.fema.apidev.exception.ResourceNotFoundException;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.mapper.EmpresaMapper;
 import br.edu.fema.apidev.model.dto.request.EmpresaReq;
@@ -20,7 +21,9 @@ public class EmpresaServiceImpl implements EmpresaService {
 
     @Override
     public Empresa findById(Long id) {
-        return empresaRepository.findById(id).orElse(null);
+        return empresaRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Empresa de id = " + id +" não encontrada.")
+        );
     }
 
     @Override
