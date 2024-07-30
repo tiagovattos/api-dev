@@ -19,7 +19,7 @@ public class SedePrincipalReq {
     @NotBlank(message = "O campo cidade é obrigatório.")
     private String cidade;
 
-    @NotNull
+    @NotNull(message = "O campo empresa id é obrigatório.")
     private Long empresaId;
 
 }

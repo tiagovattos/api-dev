@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContribuicaoReq {
-    @NotNull
+    @NotNull(message = "O campo aplicativo id é obrigatório.")
     private Long aplicativoId;
-    @NotNull
+    @NotNull(message = "O campo desenvolvedor id é obrigatório.")
     private Long desenvolvedorId;
 }

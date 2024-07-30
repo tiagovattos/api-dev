@@ -20,7 +20,8 @@ public class DesenvolvedorReq {
     private String nome;
     private Long empresaId;
 
-    @NotNull
+    @NotNull(message = "O campo data de nascimento é obrigatório.")
+
     private LocalDate dataNascimento;
     private Contrato contrato;
     private BigDecimal salario;
