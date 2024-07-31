@@ -61,4 +61,11 @@ public class EmpresaController {
                         .toList()
         );
     }
+
+    @GetMapping("/{id}/ou/{nome}")
+    public ResponseEntity<EmpresaRes> findByIdOrNome(@PathVariable Long id, @PathVariable String nome) {
+        return ResponseEntity.ok().body(
+                EmpresaMapper.toDto(empresaService.findByIdOrNome(id, nome))
+        );
+    }
 }

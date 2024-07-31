@@ -53,4 +53,12 @@ public class EmpresaServiceImpl implements EmpresaService {
     public List<Desenvolvedor> findAllDevsById(Long id) {
         return this.findById(id).getDesenvolvedores();
     }
+
+    @Override
+    public Empresa findByIdOrNome(Long id, String nome) {
+        return empresaRepository.findByIdOrNome(id, nome).orElseThrow(
+                () -> new ResourceNotFoundException("Empresa de id = " + id +
+                        " ou nome = " + nome + " não encontrada.")
+        );
+    }
 }

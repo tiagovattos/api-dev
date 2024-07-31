@@ -14,4 +14,5 @@ public interface EmpresaService {
     void deleteById(Long id);
 
     List<Desenvolvedor> findAllDevsById(Long id);
+    Empresa findByIdOrNome(Long id, String nome);
 }
