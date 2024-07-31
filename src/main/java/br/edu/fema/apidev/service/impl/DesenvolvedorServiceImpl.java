@@ -55,4 +55,18 @@ public class DesenvolvedorServiceImpl implements DesenvolvedorService {
         Desenvolvedor desenvolvedor = this.findById(id);
         desenvolvedorRepository.delete(desenvolvedor);
     }
+
+    @Override
+    public Desenvolvedor findByNome(String nome) {
+        return desenvolvedorRepository.findByNome(nome).orElseThrow(
+                () -> new ResourceNotFoundException("Desenvolvedor de nome = " + nome + " não encontrado.")
+        );
+    }
+
+    @Override
+    public Desenvolvedor findMaisVelho() {
+        return desenvolvedorRepository.findFirstByOrderByDataNascimento().orElseThrow(
+                () -> new ResourceNotFoundException("Nenhum desenvolvedor encontrado.")
+        );
+    }
 }

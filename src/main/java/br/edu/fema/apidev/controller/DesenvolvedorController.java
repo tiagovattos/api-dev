@@ -57,4 +57,19 @@ public class DesenvolvedorController {
         desenvolvedorService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/pesquisar")
+    public ResponseEntity<DesenvolvedorRes> findByNome(@RequestParam String nome) {
+        Desenvolvedor desenvolvedor = desenvolvedorService.findByNome(nome);
+        return ResponseEntity.ok().body(
+                DesenvolvedorMapper.toDto(desenvolvedor, desenvolvedor.getEmpresa()));
+    }
+
+    @GetMapping("/mais-velho")
+    public ResponseEntity<DesenvolvedorRes> findMaisVelho(){
+        Desenvolvedor desenvolvedor = desenvolvedorService.findMaisVelho();
+        return ResponseEntity.ok().body(
+                DesenvolvedorMapper.toDto(desenvolvedor, desenvolvedor.getEmpresa())
+        );
+    }
 }

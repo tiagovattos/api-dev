@@ -11,4 +11,7 @@ public interface DesenvolvedorService {
     Desenvolvedor save(DesenvolvedorReq desenvolvedorReq);
     Desenvolvedor update(Long id, DesenvolvedorReq desenvolvedorReq);
     void deleteById(Long id);
+
+    Desenvolvedor findByNome(String nome);
+    Desenvolvedor findMaisVelho();
 }
