@@ -55,4 +55,9 @@ public class SedePrincipalServiceImpl implements SedePrincipalService {
         SedePrincipal sedePrincipal = this.findById(id);
         sedePrincipalRepository.delete(sedePrincipal);
     }
+
+    @Override
+    public List<SedePrincipal> findByEmpresaIdIn(List<Long> ids) {
+        return sedePrincipalRepository.findByEmpresaIdIn(ids);
+    }
 }

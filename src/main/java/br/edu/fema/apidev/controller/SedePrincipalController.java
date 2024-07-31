@@ -55,4 +55,13 @@ public class SedePrincipalController {
         sedePrincipalService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/empresaId")
+    public ResponseEntity<List<SedePrincipalRes>> findByEmpresaIdIn(@RequestBody List<Long> ids){
+        return ResponseEntity.ok().body(
+                sedePrincipalService.findByEmpresaIdIn(ids).stream()
+                        .map((s) -> SedePrincipalMapper.toDto(s, s.getEmpresa()))
+                        .toList()
+        );
+    }
 }

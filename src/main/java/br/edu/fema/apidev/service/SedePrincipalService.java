@@ -11,4 +11,6 @@ public interface SedePrincipalService {
     SedePrincipal save(SedePrincipalReq sedePrincipalReq);
     SedePrincipal update(Long id, SedePrincipalReq sedePrincipalReq);
     void deleteById(Long id);
+
+    List<SedePrincipal> findByEmpresaIdIn(List<Long> ids);
 }
