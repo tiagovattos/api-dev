@@ -1,5 +1,6 @@
 package br.edu.fema.apidev.service;
 
+import br.edu.fema.apidev.model.Desenvolvedor;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.request.EmpresaReq;
 
@@ -11,4 +12,6 @@ public interface EmpresaService {
     Empresa save(EmpresaReq empresaReq);
     Empresa update(Long id, EmpresaReq empresaReq);
     void deleteById(Long id);
+
+    List<Desenvolvedor> findAllDevsById(Long id);
 }

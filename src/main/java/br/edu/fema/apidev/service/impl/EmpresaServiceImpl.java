@@ -1,6 +1,7 @@
 package br.edu.fema.apidev.service.impl;
 
 import br.edu.fema.apidev.exception.ResourceNotFoundException;
+import br.edu.fema.apidev.model.Desenvolvedor;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.mapper.EmpresaMapper;
 import br.edu.fema.apidev.model.dto.request.EmpresaReq;
@@ -46,5 +47,10 @@ public class EmpresaServiceImpl implements EmpresaService {
     @Override
     public void deleteById(Long id) {
         empresaRepository.delete(findById(id));
+    }
+
+    @Override
+    public List<Desenvolvedor> findAllDevsById(Long id) {
+        return this.findById(id).getDesenvolvedores();
     }
 }

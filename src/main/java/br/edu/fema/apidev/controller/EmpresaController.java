@@ -1,7 +1,9 @@
 package br.edu.fema.apidev.controller;
 
+import br.edu.fema.apidev.model.dto.mapper.DesenvolvedorMapper;
 import br.edu.fema.apidev.model.dto.mapper.EmpresaMapper;
 import br.edu.fema.apidev.model.dto.request.EmpresaReq;
+import br.edu.fema.apidev.model.dto.response.DesenvolvedorRes;
 import br.edu.fema.apidev.model.dto.response.EmpresaRes;
 import br.edu.fema.apidev.service.EmpresaService;
 import jakarta.validation.Valid;
@@ -49,5 +51,14 @@ public class EmpresaController {
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         empresaService.deleteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/devs")
+    public ResponseEntity<List<DesenvolvedorRes>> findAllDevsById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(
+                (empresaService.findAllDevsById(id)).stream()
+                        .map(d -> DesenvolvedorMapper.toDto(d, d.getEmpresa()))
+                        .toList()
+        );
     }
 }
