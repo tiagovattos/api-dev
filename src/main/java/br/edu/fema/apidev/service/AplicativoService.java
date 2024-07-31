@@ -11,4 +11,6 @@ public interface AplicativoService  {
     Aplicativo save(AplicativoReq aplicativoReq);
     Aplicativo update(Long id, AplicativoReq aplicativoReq);
     void deleteById(Long id);
+
+    Aplicativo findMaisAtualizado();
 }

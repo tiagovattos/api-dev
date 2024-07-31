@@ -8,6 +8,7 @@ import br.edu.fema.apidev.model.dto.request.AplicativoReq;
 import br.edu.fema.apidev.repository.AplicativoRepository;
 import br.edu.fema.apidev.service.AplicativoService;
 import br.edu.fema.apidev.service.EmpresaService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -56,5 +57,11 @@ public class AplicativoServiceImpl implements AplicativoService {
     public void deleteById(Long id) {
         Aplicativo aplicativo = this.findById(id);
         aplicativoRepository.delete(aplicativo);
+    }
+
+    @Override
+    public Aplicativo findMaisAtualizado() {
+        return aplicativoRepository.findFirstBy(Sort.by("ultimaAtualizacao").descending())
+                .orElseThrow(() -> new ResourceNotFoundException("Nenhum aplicativo encontrado."));
     }
 }

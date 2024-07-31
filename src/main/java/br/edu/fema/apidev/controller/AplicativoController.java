@@ -57,4 +57,12 @@ public class AplicativoController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/mais-atualizado")
+    public ResponseEntity<AplicativoRes> findMaisAtualizado(){
+        Aplicativo aplicativo = aplicativoService.findMaisAtualizado();
+        return ResponseEntity.ok().body(
+                AplicativoMapper.toDto(aplicativo, aplicativo.getEmpresa())
+        );
+    }
+
 }
