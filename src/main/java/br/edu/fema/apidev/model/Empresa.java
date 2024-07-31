@@ -6,8 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table
@@ -23,7 +24,7 @@ public class Empresa {
     private String nome;
 
     @OneToMany(mappedBy = "empresa")
-    private Set<Desenvolvedor> desenvolvedores;
+    private List<Desenvolvedor> desenvolvedores = new ArrayList<>();
 
     @OneToOne(mappedBy = "empresa")
     private SedePrincipal sedePrincipal;

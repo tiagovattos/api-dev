@@ -18,10 +18,11 @@ import java.time.LocalDate;
 public class DesenvolvedorReq {
     @NotBlank(message = "O campo nome é obrigatório.")
     private String nome;
+
+    @NotNull(message = "O campo empresa id é obrigatório.")
     private Long empresaId;
 
     @NotNull(message = "O campo data de nascimento é obrigatório.")
-
     private LocalDate dataNascimento;
     private Contrato contrato;
     private BigDecimal salario;

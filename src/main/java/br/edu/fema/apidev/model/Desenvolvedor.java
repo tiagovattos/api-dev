@@ -9,8 +9,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+
 
 @Entity
 @Table
@@ -27,9 +27,10 @@ public class Desenvolvedor {
     @ManyToOne
     private Empresa empresa;
 
-    //    @ManyToMany(mappedBy = "desenvolvedores")
+//    @ManyToMany(mappedBy = "desenvolvedores")
     @OneToMany(mappedBy = "desenvolvedor")
-    private Set<Contribuicao> contribuicoes;
+    private List<Contribuicao> contribuicoes = new ArrayList<>();
+
     private LocalDate dataNascimento;
     private Contrato contrato;
     private BigDecimal salario;
@@ -52,6 +53,7 @@ public class Desenvolvedor {
         return "Desenvolvedor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", empresa=" + empresa +
                 ", dataNascimento=" + dataNascimento +
                 ", contrato=" + contrato +
                 ", salario=" + salario +

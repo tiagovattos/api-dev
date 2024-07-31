@@ -7,27 +7,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Aplicativo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private String nome;
 
     @ManyToOne
     private Empresa empresa;
 
-    //    @ManyToMany
+//    @ManyToMany
     @OneToMany(mappedBy = "aplicativo")
-    private Set<Contribuicao> contribuicoes;
+    private List<Contribuicao> contribuicoes = new ArrayList<>();
 
     private LocalDateTime ultimaAtualizacao;
 
