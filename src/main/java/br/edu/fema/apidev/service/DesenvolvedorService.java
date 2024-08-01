@@ -3,6 +3,7 @@ package br.edu.fema.apidev.service;
 import br.edu.fema.apidev.model.Desenvolvedor;
 import br.edu.fema.apidev.model.dto.request.DesenvolvedorReq;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface DesenvolvedorService {
     Desenvolvedor findMaisVelho();
     List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal);
     void deleteByNome(String nome);
+
+    List<Desenvolvedor> findBySalarioLessThan(BigDecimal salario);
 }

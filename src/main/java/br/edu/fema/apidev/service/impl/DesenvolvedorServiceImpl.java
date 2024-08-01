@@ -11,6 +11,7 @@ import br.edu.fema.apidev.service.EmpresaService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -82,5 +83,10 @@ public class DesenvolvedorServiceImpl implements DesenvolvedorService {
     public void deleteByNome(String nome) {
         this.findByNome(nome);
         desenvolvedorRepository.deleteByNome(nome);
+    }
+
+    @Override
+    public List<Desenvolvedor> findBySalarioLessThan(BigDecimal salario) {
+        return desenvolvedorRepository.findBySalarioLessThan(salario);
     }
 }

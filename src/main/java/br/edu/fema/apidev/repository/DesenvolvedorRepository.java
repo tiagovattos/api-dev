@@ -5,6 +5,7 @@ import br.edu.fema.apidev.model.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -16,4 +17,6 @@ public interface DesenvolvedorRepository extends JpaRepository<Desenvolvedor, Lo
     List<Desenvolvedor> findByEmpresaOrderByDataNascimentoDesc(Empresa empresa);
     List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal);
     void deleteByNome(String nome);
+
+    List<Desenvolvedor> findBySalarioLessThan(BigDecimal salario);
 }
