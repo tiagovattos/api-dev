@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -70,6 +71,17 @@ public class DesenvolvedorController {
         Desenvolvedor desenvolvedor = desenvolvedorService.findMaisVelho();
         return ResponseEntity.ok().body(
                 DesenvolvedorMapper.toDto(desenvolvedor, desenvolvedor.getEmpresa())
+        );
+    }
+
+    @GetMapping("/data-entre")
+    public ResponseEntity<List<DesenvolvedorRes>> findByDataNascimentoBetween(@RequestParam LocalDate dataInicial,
+                                                                              @RequestParam LocalDate dataFinal){
+        List<Desenvolvedor> desenvolvedores = desenvolvedorService.findByDataNascimentoBetween(dataInicial, dataFinal);
+        return ResponseEntity.ok().body(
+                desenvolvedores.stream()
+                        .map(a -> DesenvolvedorMapper.toDto(a, a.getEmpresa()))
+                        .toList()
         );
     }
 }

@@ -3,6 +3,7 @@ package br.edu.fema.apidev.service;
 import br.edu.fema.apidev.model.Desenvolvedor;
 import br.edu.fema.apidev.model.dto.request.DesenvolvedorReq;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DesenvolvedorService {
@@ -14,4 +15,5 @@ public interface DesenvolvedorService {
 
     Desenvolvedor findByNome(String nome);
     Desenvolvedor findMaisVelho();
+    List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal);
 }

@@ -10,6 +10,7 @@ import br.edu.fema.apidev.service.DesenvolvedorService;
 import br.edu.fema.apidev.service.EmpresaService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -68,5 +69,10 @@ public class DesenvolvedorServiceImpl implements DesenvolvedorService {
         return desenvolvedorRepository.findFirstByOrderByDataNascimento().orElseThrow(
                 () -> new ResourceNotFoundException("Nenhum desenvolvedor encontrado.")
         );
+    }
+
+    @Override
+    public List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal) {
+        return desenvolvedorRepository.findByDataNascimentoBetween(dataInicial, dataFinal);
     }
 }
