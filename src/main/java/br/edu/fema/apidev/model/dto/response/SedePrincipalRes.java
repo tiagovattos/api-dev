@@ -4,5 +4,5 @@ public record SedePrincipalRes (
         Long id,
         String endereco,
         String cidade,
-        EmpresaRes empresa
+        String nomeEmpresa
 ){}

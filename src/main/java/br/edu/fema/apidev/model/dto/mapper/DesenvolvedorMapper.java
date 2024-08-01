@@ -10,7 +10,7 @@ public class DesenvolvedorMapper {
         return new DesenvolvedorRes(
                 desenvolvedor.getId(),
                 desenvolvedor.getNome(),
-                EmpresaMapper.toDto(empresa),
+                empresa.getNome(),
                 desenvolvedor.getDataNascimento()
         );
     }

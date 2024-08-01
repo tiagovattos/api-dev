@@ -12,7 +12,7 @@ public class SedePrincipalMapper {
                 sedePrincipal.getId(),
                 sedePrincipal.getEndereco(),
                 sedePrincipal.getCidade(),
-                EmpresaMapper.toDto(empresa)
+                empresa.getNome()
         );
     }
 

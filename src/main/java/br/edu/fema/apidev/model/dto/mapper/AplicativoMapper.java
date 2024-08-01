@@ -10,7 +10,7 @@ public class AplicativoMapper {
         return new AplicativoRes(
                 aplicativo.getId(),
                 aplicativo.getNome(),
-                EmpresaMapper.toDto(empresa),
+                empresa.getNome(),
                 aplicativo.getUltimaAtualizacao()
         );
     }

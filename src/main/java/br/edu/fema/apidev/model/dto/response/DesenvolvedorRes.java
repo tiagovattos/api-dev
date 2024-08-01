@@ -5,6 +5,6 @@ import java.time.LocalDate;
 public record DesenvolvedorRes(
         Long id,
         String nome,
-        EmpresaRes empresa,
+        String nomeEmpresa,
         LocalDate dataNascimento
 ){}
