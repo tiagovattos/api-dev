@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -23,7 +22,7 @@ public class DesenvolvedorReq {
     private Long empresaId;
 
     @NotNull(message = "O campo data de nascimento é obrigatório.")
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private Contrato contrato;
     private BigDecimal salario;
 }

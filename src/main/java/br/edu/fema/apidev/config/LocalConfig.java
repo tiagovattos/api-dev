@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Configuration
 @Profile("local")
@@ -34,9 +33,9 @@ public class LocalConfig {
         Empresa e2 = empresaService.save(new EmpresaReq("Apple"));
         Empresa e3 = empresaService.save(new EmpresaReq("Xiaomi"));
 
-        Desenvolvedor d1 = desenvolvedorService.save(new DesenvolvedorReq("Tiago Zamboni", 1L, LocalDate.of(2004, 5, 2), Contrato.CLT, BigDecimal.valueOf(20000)));
-        Desenvolvedor d2 = desenvolvedorService.save(new DesenvolvedorReq("Pedro Zamboni", 2L, LocalDate.of(2017, 2, 16), Contrato.CLT, BigDecimal.valueOf(2300)));
-        Desenvolvedor d3 = desenvolvedorService.save(new DesenvolvedorReq("Andre Zamboni", 3L, LocalDate.of(1999, 5, 25), Contrato.PJ, BigDecimal.valueOf(1500)));
+        Desenvolvedor d1 = desenvolvedorService.save(new DesenvolvedorReq("Tiago Zamboni", 1L, "02/05/2004", Contrato.CLT, BigDecimal.valueOf(20000)));
+        Desenvolvedor d2 = desenvolvedorService.save(new DesenvolvedorReq("Pedro Zamboni", 2L, "16/02/2015", Contrato.CLT, BigDecimal.valueOf(2300)));
+        Desenvolvedor d3 = desenvolvedorService.save(new DesenvolvedorReq("Andre Zamboni", 3L, "25/05/1999", Contrato.PJ, BigDecimal.valueOf(1500)));
 
         Aplicativo a1 = aplicativoService.save(new AplicativoReq("Amazon Prime Video", 1L));
         Aplicativo a2 = aplicativoService.save(new AplicativoReq("Apple Music", 2L));

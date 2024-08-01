@@ -4,6 +4,7 @@ import br.edu.fema.apidev.model.Aplicativo;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.request.AplicativoReq;
 import br.edu.fema.apidev.model.dto.response.AplicativoRes;
+import br.edu.fema.apidev.utils.LocalDateTimeFormatter;
 
 public class AplicativoMapper {
     public static AplicativoRes toDto(Aplicativo aplicativo, Empresa empresa){
@@ -11,7 +12,7 @@ public class AplicativoMapper {
                 aplicativo.getId(),
                 aplicativo.getNome(),
                 empresa.getNome(),
-                aplicativo.getUltimaAtualizacao()
+                LocalDateTimeFormatter.dateToString(aplicativo.getUltimaAtualizacao())
         );
     }
 
