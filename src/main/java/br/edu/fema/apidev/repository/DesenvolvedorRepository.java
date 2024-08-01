@@ -15,4 +15,5 @@ public interface DesenvolvedorRepository extends JpaRepository<Desenvolvedor, Lo
     Optional<Desenvolvedor> findFirstByOrderByDataNascimento();
     List<Desenvolvedor> findByEmpresaOrderByDataNascimentoDesc(Empresa empresa);
     List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal);
+    void deleteByNome(String nome);
 }

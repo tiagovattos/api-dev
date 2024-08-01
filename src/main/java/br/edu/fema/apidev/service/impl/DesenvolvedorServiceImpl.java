@@ -8,6 +8,7 @@ import br.edu.fema.apidev.model.dto.request.DesenvolvedorReq;
 import br.edu.fema.apidev.repository.DesenvolvedorRepository;
 import br.edu.fema.apidev.service.DesenvolvedorService;
 import br.edu.fema.apidev.service.EmpresaService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -74,5 +75,12 @@ public class DesenvolvedorServiceImpl implements DesenvolvedorService {
     @Override
     public List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal) {
         return desenvolvedorRepository.findByDataNascimentoBetween(dataInicial, dataFinal);
+    }
+
+    @Override
+    @Transactional
+    public void deleteByNome(String nome) {
+        this.findByNome(nome);
+        desenvolvedorRepository.deleteByNome(nome);
     }
 }

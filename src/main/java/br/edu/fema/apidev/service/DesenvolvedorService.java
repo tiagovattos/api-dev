@@ -16,4 +16,5 @@ public interface DesenvolvedorService {
     Desenvolvedor findByNome(String nome);
     Desenvolvedor findMaisVelho();
     List<Desenvolvedor> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal);
+    void deleteByNome(String nome);
 }

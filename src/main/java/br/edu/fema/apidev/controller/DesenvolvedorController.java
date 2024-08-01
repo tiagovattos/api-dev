@@ -84,4 +84,10 @@ public class DesenvolvedorController {
                         .toList()
         );
     }
+
+    @DeleteMapping("/nome/{nome}")
+    public ResponseEntity<Void> deleteByNome(@PathVariable String nome){
+        desenvolvedorService.deleteByNome(nome);
+        return ResponseEntity.ok().build();
+    }
 }
