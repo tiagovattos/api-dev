@@ -5,6 +5,7 @@ import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.request.EmpresaReq;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmpresaService {
     Empresa findById(Long id);
@@ -15,4 +16,5 @@ public interface EmpresaService {
 
     List<Desenvolvedor> findAllDevsById(Long id);
     Empresa findByIdOrNome(Long id, String nome);
+    Map<String, Integer> findAllDevsOrderByAge(Long id);
 }

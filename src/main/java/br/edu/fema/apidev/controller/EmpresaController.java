@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/empresa")
@@ -66,6 +67,13 @@ public class EmpresaController {
     public ResponseEntity<EmpresaRes> findByIdOrNome(@PathVariable Long id, @PathVariable String nome) {
         return ResponseEntity.ok().body(
                 EmpresaMapper.toDto(empresaService.findByIdOrNome(id, nome))
+        );
+    }
+
+    @GetMapping("/{id}/devs/idades")
+    public ResponseEntity<Map<String, Integer>> findAllDevsIdades(@PathVariable Long id) {
+        return ResponseEntity.ok().body(
+                empresaService.findAllDevsOrderByAge(id)
         );
     }
 }

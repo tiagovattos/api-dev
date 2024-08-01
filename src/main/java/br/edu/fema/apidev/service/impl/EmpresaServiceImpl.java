@@ -5,19 +5,26 @@ import br.edu.fema.apidev.model.Desenvolvedor;
 import br.edu.fema.apidev.model.Empresa;
 import br.edu.fema.apidev.model.dto.mapper.EmpresaMapper;
 import br.edu.fema.apidev.model.dto.request.EmpresaReq;
+import br.edu.fema.apidev.repository.DesenvolvedorRepository;
 import br.edu.fema.apidev.repository.EmpresaRepository;
 import br.edu.fema.apidev.service.EmpresaService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
 
     private final EmpresaRepository empresaRepository;
+    private final DesenvolvedorRepository desenvolvedorRepository;
 
-    public EmpresaServiceImpl(EmpresaRepository empresaRepository) {
+    public EmpresaServiceImpl(EmpresaRepository empresaRepository, DesenvolvedorRepository desenvolvedorRepository) {
         this.empresaRepository = empresaRepository;
+        this.desenvolvedorRepository = desenvolvedorRepository;
     }
 
     @Override
@@ -61,4 +68,18 @@ public class EmpresaServiceImpl implements EmpresaService {
                         " ou nome = " + nome + " não encontrada.")
         );
     }
+
+    @Override
+    public Map<String, Integer> findAllDevsOrderByAge(Long id) {
+        Empresa empresa = this.findById(id);
+        List<Desenvolvedor> devs = desenvolvedorRepository.findByEmpresaOrderByDataNascimentoDesc(empresa);
+        Map<String, Integer> map = new LinkedHashMap<>();
+        devs.forEach(
+                d -> map.put(
+                        d.getNome(),
+                        Period.between(d.getDataNascimento(), LocalDate.now()).getYears()));
+        return map;
+    }
+
+
 }
