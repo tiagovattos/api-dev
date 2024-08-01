@@ -89,4 +89,19 @@ public class DesenvolvedorServiceImpl implements DesenvolvedorService {
     public List<Desenvolvedor> findBySalarioLessThan(BigDecimal salario) {
         return desenvolvedorRepository.findBySalarioLessThan(salario);
     }
+
+    @Override
+    public List<Desenvolvedor> findBySalarioLessThanEqual(BigDecimal salario) {
+        return desenvolvedorRepository.findBySalarioLessThanEqual(salario);
+    }
+
+    @Override
+    public List<Desenvolvedor> findBySalarioGreaterThan(BigDecimal salario) {
+        return desenvolvedorRepository.findBySalarioGreaterThan(salario);
+    }
+
+    @Override
+    public List<Desenvolvedor> findBySalarioGreaterThanEqual(BigDecimal salario) {
+        return desenvolvedorRepository.findBySalarioGreaterThanEqual(salario);
+    }
 }

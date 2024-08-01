@@ -47,7 +47,7 @@ public class DesenvolvedorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<DesenvolvedorRes> update(@PathVariable Long id,
-                                                   @RequestBody @Valid DesenvolvedorReq desenvolvedorReq){
+                                                   @RequestBody @Valid DesenvolvedorReq desenvolvedorReq) {
         Desenvolvedor desenvolvedor = desenvolvedorService.update(id, desenvolvedorReq);
         return ResponseEntity.ok().body(
                 DesenvolvedorMapper.toDto(
@@ -55,7 +55,7 @@ public class DesenvolvedorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         desenvolvedorService.deleteById(id);
         return ResponseEntity.ok().build();
     }
@@ -68,7 +68,7 @@ public class DesenvolvedorController {
     }
 
     @GetMapping("/mais-velho")
-    public ResponseEntity<DesenvolvedorRes> findMaisVelho(){
+    public ResponseEntity<DesenvolvedorRes> findMaisVelho() {
         Desenvolvedor desenvolvedor = desenvolvedorService.findMaisVelho();
         return ResponseEntity.ok().body(
                 DesenvolvedorMapper.toDto(desenvolvedor, desenvolvedor.getEmpresa())
@@ -77,7 +77,7 @@ public class DesenvolvedorController {
 
     @GetMapping("/data-entre")
     public ResponseEntity<List<DesenvolvedorRes>> findByDataNascimentoBetween(@RequestParam LocalDate dataInicial,
-                                                                              @RequestParam LocalDate dataFinal){
+                                                                              @RequestParam LocalDate dataFinal) {
         List<Desenvolvedor> desenvolvedores = desenvolvedorService.findByDataNascimentoBetween(dataInicial, dataFinal);
         return ResponseEntity.ok().body(
                 desenvolvedores.stream()
@@ -87,17 +87,45 @@ public class DesenvolvedorController {
     }
 
     @DeleteMapping("/nome/{nome}")
-    public ResponseEntity<Void> deleteByNome(@PathVariable String nome){
+    public ResponseEntity<Void> deleteByNome(@PathVariable String nome) {
         desenvolvedorService.deleteByNome(nome);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/salario</{salario}")
-    public ResponseEntity<List<DesenvolvedorRes>> findBySalarioLessThan(@PathVariable BigDecimal salario){
+    public ResponseEntity<List<DesenvolvedorRes>> findBySalarioLessThan(@PathVariable BigDecimal salario) {
         return ResponseEntity.ok().body(
                 desenvolvedorService.findBySalarioLessThan(salario).stream()
                         .map(a -> DesenvolvedorMapper.toDto(a, a.getEmpresa()))
                         .toList()
         );
     }
+
+    @GetMapping("/salario<=/{salario}")
+    public ResponseEntity<List<DesenvolvedorRes>> findBySalarioLessThanEqual(@PathVariable BigDecimal salario) {
+        return ResponseEntity.ok().body(
+                desenvolvedorService.findBySalarioLessThanEqual(salario).stream()
+                        .map(a -> DesenvolvedorMapper.toDto(a, a.getEmpresa()))
+                        .toList()
+        );
+    }
+
+    @GetMapping("/salario>/{salario}")
+    public ResponseEntity<List<DesenvolvedorRes>> findBySalarioGreaterThan(@PathVariable BigDecimal salario) {
+        return ResponseEntity.ok().body(
+                desenvolvedorService.findBySalarioGreaterThan(salario).stream()
+                        .map(a -> DesenvolvedorMapper.toDto(a, a.getEmpresa()))
+                        .toList()
+        );
+    }
+
+    @GetMapping("/salario>=/{salario}")
+    public ResponseEntity<List<DesenvolvedorRes>> findBySalarioGreaterThanEqual(@PathVariable BigDecimal salario) {
+        return ResponseEntity.ok().body(
+                desenvolvedorService.findBySalarioGreaterThanEqual(salario).stream()
+                        .map(a -> DesenvolvedorMapper.toDto(a, a.getEmpresa()))
+                        .toList()
+        );
+    }
+
 }
